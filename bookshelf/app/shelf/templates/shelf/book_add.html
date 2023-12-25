@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-lg-6 col-md-8 mx-auto text-center">
+<form action="" method="post" enctype="multipart/form-data">
+    {% for field in form %}
+    {% csrf_token %}
+    <div class="input-group input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">{{ field.label_tag }}</span>
+        </div>
+        {{ field }}
+      </div>
+    {% endfor %}
+
+    <input class="btn btn-success btn-lg" type="submit" value="Submit">
+    
+
+
+
+</form>
+<a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-secondary" style="font-size:20px; float:left; color: #0c7cff;">&#8617;</a>
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div{% if message.tags %} class="{{ message.tags }} {% endif %} text-warning" >{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+</div>  
+{% endblock %}

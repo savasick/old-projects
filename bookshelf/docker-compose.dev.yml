@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    command: python manage.py runserver 0.0.0.0:${NGINX_PORT}
+    restart: always
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - ${NGINX_PORT}:${NGINX_PORT}
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    container_name: DB-${CONTAINER_NAME}
+    image: postgres:14.5-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    restart: always
+    environment:
+      - POSTGRES_ROOT_PASSWORD=${DB_ROOT_PASSWD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_DB=${DB_DATABASE}
+
+volumes:
+  postgres-data:

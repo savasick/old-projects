@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="{% static './img/book-shelf.png' %}" alt="" height="121">
+    <h1 class="display-5 fw-bold">BookShelf</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Local Library
+          <p class="badge bg-primary text-wrap"><strong>Books:</strong> {{ num_books }}</p>
+          <p class="badge bg-primary text-wrap"><strong>Authors:</strong> {{ num_authors }}</p>
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="{% url 'books' %}" type="button" class="btn btn-primary btn-lg px-4 gap-3">Browse books</a>
+        <a href="https://github.com/mr-slum/bookshelf" type="button" class="btn btn-outline-secondary btn-lg px-4">Github</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

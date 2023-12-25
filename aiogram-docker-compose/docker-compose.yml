@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  telegram:
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "8888:8888"
+    build: .

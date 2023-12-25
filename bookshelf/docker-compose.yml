@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+
+  web:
+    container_name: ${CONTAINER_NAME}
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    command: gunicorn src.wsgi:application --bind 0.0.0.0:${PORT}
+    restart: always
+    volumes:
+      - static-volume:/home/app/web/static
+      - media-volume:/home/app/web/media
+    expose:
+      - ${PORT}
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  db:
+    container_name: DB-${CONTAINER_NAME}
+    image: postgres:14.5-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    restart: always
+    environment:
+      - POSTGRES_ROOT_PASSWORD=${DB_ROOT_PASSWD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_DB=${DB_DATABASE}
+
+  nginx:
+    container_name: NGINX-${CONTAINER_NAME}
+    build: ./nginx
+    volumes:
+      - static-volume:/home/app/web/static
+      - media-volume:/home/app/web/media
+    restart: always
+    ports:
+      - ${NGINX_PORT}:80
+    depends_on:
+      - web
+
+volumes:
+  postgres-data:
+  static-volume:
+  media-volume:

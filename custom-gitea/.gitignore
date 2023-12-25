@@ -1,0 +1,10 @@
+/postgres
+gitea-dump.tar
+gitea/git/
+gitea/ssh/
+help/readme.md
+gitea/gitea/*
+!gitea/gitea/conf/
+!gitea/gitea/assets/
+!gitea/gitea/public/
+!gitea/gitea/templates/

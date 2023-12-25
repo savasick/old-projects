@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-lg-6 col-md-8 mx-auto text-center">
+  <h1 class="fw-light">Authors</h1>
+  <p class="lead text-muted">at BookShelf</p>
+
+</div>
+<div>
+  <form class="input-group" action="{% url 'authors' %}" method="get">
+    <input name="q" type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon">
+    <button type=submit class="btn btn-outline-primary">search</button>
+  </form>
+</div>
+{% if author_list %}
+{% for author in author_list %}
+
+<div class="album py-5  align-items-center">
+  <div class="container">
+    <div class="card shadow-sm test-center">
+      <a href="{{ author.get_absolute_url }}">
+      </a>
+      <div class="card-body">
+        <p class="card-text">{{ author }}</p>
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="btn-group">
+            <a href="{{ author.get_absolute_url }}" type="button" class="btn btn-sm btn-outline-secondary">View</a>
+          </div>
+          <small class="text-muted"></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+{% else %}
+  <p class="alert alert-warning text-center" role="alert">There are no authors.</p>
+{% endif %}
+{% endblock %}

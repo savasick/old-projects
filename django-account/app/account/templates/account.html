@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+<section >
+  {% load static %}
+  
+  <div class="row">
+
+    <div class="col-lg-4">
+      <div class="card mb-4">
+        <div class="card-body text-center">
+
+          {% if account.avatar %}
+          <img src="{{ account.avatar.url }}" class="rounded-circle img-fluid" width="150px">
+          {% else %}
+          <img src="{% static 'image\account\user.png' %}" class="rounded-circle img-fluid" width="150px">
+          {% endif %}
+          {% if account.nickname %}<h5 class="my-3">{{ account.nickname }}</h5>{% endif %}
+          {% if account.first_name %}<p class="text-muted mb-1">{{ account.first_name }} {% if account.last_name %}{{ account.last_name }}{% endif %}</p>{% endif %}
+          {% if account.company %}<p class="text-muted mb-4">{{ account.company }}</p>{% endif %}
+          {% if user.username == account.username %}
+
+            <a href="{% url 'settings' %}" class="btn btn-outline-warning">Settings</a>
+
+            <a href="{% url 'security' %}" class="btn btn-outline-warning">Security</a>
+
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card mb-4">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">User name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ account.username }}</p>
+            </div>
+          </div>
+
+          {% if account.nickname %}
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Nick name</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ account.nickname }}</p>
+            </div>
+          </div>
+          {% endif %}
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">Date joined</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ account.date_joined }}</p>
+            </div>
+          </div>
+          {% if account.bio %}
+
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0">BIO</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0">{{ account.bio }}</p>
+            </div>
+          </div>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+        
+{% endblock content %}

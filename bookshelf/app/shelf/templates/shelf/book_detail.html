@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-secondary" style="font-size:20px; float:left; color: #0c7cff;">&#8617;</a>
+
+    <div class="row">
+        
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                
+                <h3>{{ book.title }}</h3>
+                {% for author_one in book.author.all %}
+                <p>
+                    <a href="{{ author_one.get_absolute_url }}" class="link-secondary link-opacity-10-hover">
+                        {{ author_one }}
+                    </a>
+                </p>
+                {% endfor %}
+                <p class="mb-0">Description:{{ book.description }}</p>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            {% if book.isbn %}
+                <img src="https://pictures.abebooks.com/isbn/{{ book.isbn }}-us-300.jpg" height="500px" alt="">
+            {% endif %}
+            <div class="project-info-box">
+                <p><b>Language:</b> {{ book.language }}</p>
+                <div class="project-info-box">
+                    {% if book.bookfile %}
+                    <p>file:
+                        <a href="{{ book.bookfile.url }}"  class="btn btn-outline-secondary" >
+                            View 
+                        </a>&ensp;
+                        <a href="{{ book.bookfile.url }}"  class="btn btn-outline-secondary" download>
+                            Download
+                        </a>
+                    </p>
+                    {% endif %}
+                    <p>
+                        isbn: {{ book.isbn }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

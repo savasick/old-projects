@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: python manage.py runserver 0.0.0.0:80
+    restart: always
+    volumes:
+      - ./app/:/app/
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14.5-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_ROOT_PASSWORD=${DB_ROOT_PASSWD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_DB=${DB_DATABASE}
+
+volumes:
+  postgres-data:

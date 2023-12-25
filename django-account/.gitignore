@@ -1,0 +1,4 @@
+/app/static/*
+!/app/static/.gitkeep
+/app/media/*
+!/app/media/.gitkeep

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+  <h1 class="display-4">List of accounts:</h1>
+  
+  {% for account in accounts %}
+  <div class="list-group">
+    <a href="{% url 'account' account.username %}" class="list-group-item list-group-item-action">
+      {% if account.avatar %}
+      <img src="{{ account.avatar.url }}" class="rounded-circle img-fluid" width="42px">
+      {% endif %}
+
+      {% if account.nickname %}
+        {{ account.nickname }}
+      {% else %}
+        {{ account.get_username }}
+      {% endif %}
+    </a>
+  </div>
+  {% empty %}
+      <div>No accounts yet.</div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
