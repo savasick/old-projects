@@ -42,7 +42,7 @@ mb will bring them back to alive, someday
 
 <li>
 <h3>
-<a href="./django-account">django-docker-compose</a> - django with docker, template
+<a href="./django-docker-compose/">django-docker-compose</a> - django with docker, template
 </h3>
 </li>
 
