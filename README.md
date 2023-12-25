@@ -2,7 +2,7 @@
 
 #### All works fine, i think
 
-#### A list of projects that I don’t want to touch anymore, and don't advise you too :)
+#### A list of projects that I don’t want to touch anymore, and don't advise you to :)
 
 mb will bring them back to alive, someday
 
