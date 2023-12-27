@@ -1,6 +1,6 @@
 # Old Staff
 
-#### All works fine, i think
+#### All works fine, I think
 
 #### A list of projects that I don’t want to touch anymore, and don't advise you to :)
 
