@@ -60,6 +60,12 @@ mb will bring them back to alive, someday
 
 <li>
 <h3>
+<a href="./old-docker-homelab">taiga</a> - old-docker-homelab
+</h3>
+</li>
+
+<li>
+<h3>
 <a href="./taiga-docker-compose">taiga</a> - project management tool within docker
 </h3>
 </li>

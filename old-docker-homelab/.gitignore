@@ -1,0 +1,10 @@
+/postgres
+/certs/certificate.pem
+/certs/privatekey.pem
+gitea/
+/tmp
+/test
+/data
+/apps-files/postgres/server.crt
+/apps-files/postgres/server.key
+/apps-files/heimdall/www/logs
